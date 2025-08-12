@@ -288,3 +288,92 @@ fn ownership() {
     println!("Name: {}", name2);
 }
 
+#[test] 
+fn clone() {
+    let nama = String::from("Muhammad Nadhif");
+    // fungsi clone() akan mengembalikan data baru yang memiliki nilai yang sama dengan data
+    // yang dimiliki oleh variabel nama, sehingga variabel nama tetap memiliki hak atas data
+    let nama2 = nama.clone();
+    // tipe data String adalah tipe data yang disimpan di heap
+    // sehingga jika kita mengubah atau menghapus data tersebut, maka kita harus menghapusnya
+    // secara manual dengan menggunakan fungsi drop()
+    println!("Nama: {}, Nama2: {}", nama, nama2);
+    // untuk clone sendiri bisa saja untuk memberatkan memori karena akan membuat data baru di heap
+}
+
+#[test] 
+fn if_express() {
+
+    // belajar mengenai if expression
+    // if expression adalah ekspresi yang mengembalikan nilai
+    // if expression biasanya digunakan untuk menentukan nilai dari variabel berdasarkan kondisi tertentu
+    // if expression juga bisa digunakan untuk menentukan nilai dari variabel berdasarkan kondisi tertentu
+    // jika kondisi terpenuhi, maka nilai dari variabel akan diubah sesuai dengan kondisi tersebut 
+    let value = 9;
+    if value >= 10 { // jika nilai lebih besar atau sama dengan 10
+        "selamat anda berhasil dalam melakukan dengan baik"
+    } else if value >= 9 {// jika nilai lebih besar atau sama dengan 9
+        "anda sudah melakukan dengan sangat baik" 
+    } else if value >= 8 {// jika nilai lebih besar atau sama dengan 8
+        "anda sudah melakukan dengan cukup baik" 
+    } else if value >= 7 {// jika nilai lebih besar atau sama dengan 7
+        "anda sudah melakukan dengan baik" 
+
+    }else {
+        "maaf anda belum berhasil dalam melakukan dengan baik"// jika nilai kurang dari 7
+    };
+
+    // untuk menyimpan hasil dari if expression ke dalam variabel
+    // kita harus menggunakan let untuk menyimpan hasil dari if expression ke dalam variabel
+    // jika tidak menggunakan let, maka hasil dari if expression tidak akan disimpan di dalam variabel
+    // dan tidak bisa digunakan di luar if expression
+    // jika kita ingin menyimpan hasil dari if expression ke dalam variabel, kita harus menggunakan
+    let result:&str = if value >= 10 { // jika nilai lebih besar atau sama dengan 10
+        "selamat anda berhasil dalam melakukan dengan baik"
+    } else if value >= 9 {// jika nilai lebih besar atau sama dengan 9
+        "anda sudah melakukan dengan sangat baik" 
+    } else if value >= 8 {// jika nilai lebih besar atau sama dengan 8
+        "anda sudah melakukan dengan cukup baik" 
+    } else if value >= 7 {// jika nilai lebih besar atau sama dengan 7
+        "anda sudah melakukan dengan baik" 
+
+    }else {
+        "maaf anda belum berhasil dalam melakukan dengan baik"// jika nilai kurang dari 7
+    };
+   
+
+    println!("Result: {}", result);
+}
+
+
+#[test] 
+fn perulangan() {
+    let mut i = 0;// inisialisasi variabel i dengan nilai 0
+    loop{
+        i += 1;// menambahkan nilai i dengan 1 setiap kali perulangan
+        if i > 10{// jika nilai i lebih besar dari 10 maka perulangan akan selesai
+            break
+        }else if i % 2 == 0{// jika nilai i genap maka akan melanjutkan ke perulangan selanjutnya
+            continue
+        }
+
+        println!("Perulangan ke: {}", i);
+    }
+
+    println!("======BREAKKKK======");
+
+    // belajar loop return value
+    // loop juga bisa mengembalikan nilai
+    // jika kita ingin mengembalikan nilai dari loop, kita bisa menggunakan break
+    // untuk mengembalikan nilai dari loop, kita harus menggunakan break
+    // dan memberikan nilai yang ingin dikembalikan 
+
+    let mut j = 0;
+    let result = loop {
+        j += 1;
+        if j >= 10{
+            break j * 2;
+        }
+    };
+    println!("Perulangan ke: {}", result);
+}
