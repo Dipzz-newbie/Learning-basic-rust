@@ -371,7 +371,7 @@ fn perulangan() {
     let mut j = 0;
     let result = loop {
         j += 1;
-        if j >= 10{
+        if j >= 100{
             break j * 2;
         }
     };
