@@ -519,3 +519,17 @@ fn recurvise_test() {
     // jika times sama dengan 0 maka akan keluar dari fungsi
     // jika times lebih dari 0 maka akan mencetak value dan memanggil fungsi rekursif dengan mengurangi times
 }
+
+fn factorial_recur(n: i32) -> i32 {
+    if n == 1 {
+        return 1; // jika n kurang dari 1 maka akan mengembalikan nilai 1
+    }
+    n * factorial_recur(n - 1) // memanggil fungsi rekursif dengan mengurangi n
+}
+
+#[test] 
+fn factorial_recur_test() {
+    let result = factorial_recur(5);
+    println!("Factorial of 5 is: {}", result); // akan mencetak hasil dari fungsi rekursif
+    assert_eq!(result, 120); // memastikan hasil dari fungsi rekursif sama dengan 120
+}
