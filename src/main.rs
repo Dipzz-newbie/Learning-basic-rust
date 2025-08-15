@@ -500,3 +500,22 @@ fn factorial_loop(n: i32) -> i32 {
 fn factorial_test() {
     print!("Factorial of 5 is: {}", factorial_loop(5));
 }
+
+fn recurvise(value: String, times:u32) {
+    if times == 0 {
+        return; // jika times sama dengan 0 maka akan keluar dari fungsi
+    }else{
+        println!("{}", value);
+        recurvise(value, times - 1); // memanggil fungsi rekursif dengan mengurangi times
+    }
+}
+
+#[test]
+fn recurvise_test() {
+    let value = String::from("Hello, World!");
+    let times = 5;
+    recurvise(value, times); // memanggil fungsi rekursif
+    // akan mencetak value sebanyak times kali
+    // jika times sama dengan 0 maka akan keluar dari fungsi
+    // jika times lebih dari 0 maka akan mencetak value dan memanggil fungsi rekursif dengan mengurangi times
+}
