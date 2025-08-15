@@ -407,3 +407,96 @@ fn whileloop() {
         i += 1;
     }
 }
+
+#[test]
+fn iteration_while() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+    let mut index = 0;
+
+    while index < datas.len(){  // selama index kurang dari panjang data
+        // mencetak data pada index ke index
+        println!("Value: {}", datas[index]);
+        index += 1;
+        // dan menambahkan index dengan 1 setiap kali perulangan
+        // sehingga perulangan akan berhenti jika index lebih besar dari panjang data
+    }
+    
+}
+
+#[test]
+fn for_loop() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+    for value in datas{// menggunakan for untuk iterasi data
+        // iter() akan mengembalikan iterator yang akan mengembalikan data satu per satu
+        // sehingga kita bisa mengambil data dari array satu per satu
+        // dan mencetak data pada index ke index
+        // menambahkan index dengan 1 setiap kali perulangan
+        // sehingga perulangan akan berhenti jika index lebih besar dari panjang data
+        println!("Value: {}", value);
+    }
+}
+
+
+#[test] 
+fn range_ite() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+
+    let range = 0..datas.len(); // membuat range dari 0 sampai panjang data
+    // range adalah tipe data yang merepresentasikan rentang dari nilai tertentu
+    // range akan mengembalikan nilai dari 0 sampai panjang data - 1
+    // sehingga kita bisa mengambil data dari array satu per satu
+    // dan mencetak data pada index ke index    
+    println!("Start: {}", range.start);
+    println!("End: {}", range.end);
+
+    for i in range {
+        println!("-{}", datas[i]);
+    }
+}
+
+#[test] 
+fn range_inc() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+
+    let range = 0..=4; // ( menggunakan '=')
+    // range inclusive akan mengembalikan nilai dari 0 sampai panjang data
+    // sehingga kita bisa mengambil data dari array satu per satu
+    // dan mencetak data pada index ke index     
+    println!("Start: {}", range.start()); // untuk mengambil nilai awal range menggunakan method start()
+    println!("End: {}", range.end()); // untuk mengambil nilai akhir range menggunakan method end()
+
+    for i in range {
+        println!("-{}", datas[i]);
+    }
+}
+
+
+fn names(firstname: &str, lastname:&str) {
+    println!("Goodbye, {} {}", firstname, lastname);
+}
+
+#[test]
+fn name_call(){
+    names("dipz", "newbie");
+    names("eko", "kurniawan");
+    names("newsz", "guy");
+}
+
+
+fn factorial_loop(n: i32) -> i32 {
+    if n < 1{
+        return 0;// jika n kurang dari 1 maka akan mengembalikan nilai 0
+    }
+
+    let mut result = 1;
+    for i in 1..=n {
+        result *= i; // mengalikan result dengan i  
+    }
+    result // mengembalikan nilai result
+
+}
+
+#[test]
+fn factorial_test() {
+    print!("Factorial of 5 is: {}", factorial_loop(5));
+}
