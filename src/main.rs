@@ -376,4 +376,34 @@ fn perulangan() {
         }
     };
     println!("Perulangan ke: {}", result);
+
+    let mut o:i32 = 0;
+    'outer: loop {
+        o += 1;
+        let mut p:i32 = 0;
+        loop{
+            if o > 10 {
+                break 'outer; // keluar dari loop outer
+            }
+            println!("perulangan ke: {} x {} = {}", o, p, o * p);
+            p += 1;
+            if p > 10{
+                break;
+            }
+        }
+    }
+}
+
+
+#[test]
+fn whileloop() {
+    let mut i = 0;
+    while i <= 10 { // perulangan akan berhenti jika i lebih besar dari 10
+        // jika i genap maka akan mencetak perulangan ke i
+        // jika i ganjil maka akan melanjutkan ke perulangan selanjutnya
+        if i % 2 == 0 { // jika i genap maka akan mencetak perulangan ke i
+            println!("Perulangan ke: {}", i);
+        }
+        i += 1;
+    }
 }
