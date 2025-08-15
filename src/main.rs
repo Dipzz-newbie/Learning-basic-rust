@@ -512,9 +512,7 @@ fn recurvise(value: String, times:u32) {
 
 #[test]
 fn recurvise_test() {
-    let value = String::from("Hello, World!");
-    let times = 5;
-    recurvise(value, times); // memanggil fungsi rekursif
+    recurvise(String::from("Hello, World!"), 5); // memanggil fungsi rekursif
     // akan mencetak value sebanyak times kali
     // jika times sama dengan 0 maka akan keluar dari fungsi
     // jika times lebih dari 0 maka akan mencetak value dan memanggil fungsi rekursif dengan mengurangi times
@@ -532,4 +530,19 @@ fn factorial_recur_test() {
     let result = factorial_recur(5);
     println!("Factorial of 5 is: {}", result); // akan mencetak hasil dari fungsi rekursif
     assert_eq!(result, 120); // memastikan hasil dari fungsi rekursif sama dengan 120
+}
+
+
+fn full_name(firstname: String, lastname: String) -> String {
+    // fungsi ini akan mengembalikan nilai String
+    // yang merupakan gabungan dari firstname dan lastname
+    format!("{} {}", firstname, lastname) // menggunakan format! untuk menggabungkan string
+}
+
+#[test]
+fn test_name() {
+    let firstname = String::from("Muhammad");
+    let lastname = String::from("Nadhif Triyudo");
+    let fullname = full_name(firstname, lastname); // memanggil fungsi full_name
+    println!("Full Name: {}", fullname); // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
 }
