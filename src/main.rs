@@ -533,16 +533,22 @@ fn factorial_recur_test() {
 }
 
 
-fn full_name(firstname: String, lastname: String) -> String {
+fn full_name(first_name: String, last_name: String) -> (String, String, String) {
     // fungsi ini akan mengembalikan nilai String
     // yang merupakan gabungan dari firstname dan lastname
-    format!("{} {}", firstname, lastname) // menggunakan format! untuk menggabungkan string
+    let full_name = format!("{} {}", first_name, last_name); // menggunakan format! untuk menggabungkan string
+    (first_name, last_name, full_name)
 }
+
 
 #[test]
 fn test_name() {
     let firstname = String::from("Muhammad");
     let lastname = String::from("Nadhif Triyudo");
-    let fullname = full_name(firstname, lastname); // memanggil fungsi full_name
-    println!("Full Name: {}", fullname); // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+    let (_first_name, _last_name, name) = full_name(firstname, lastname); // memanggil fungsi full_name
+    println!("Full Name: {}", name);
+    println!("First Name: {}", _first_name);
+    println!("Last Name: {}", _last_name);
+    
+     // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
 }
