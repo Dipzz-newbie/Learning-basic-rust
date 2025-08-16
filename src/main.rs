@@ -554,7 +554,7 @@ fn test_name() {
 }
 
 
-// return value ownership to build a new tuple
+// return value menggunakan reference
 fn full_name_ref(first_name: &String, last_name: &String) -> String {
     // fungsi ini akan mengembalikan nilai String
     // yang merupakan gabungan dari firstname dan lastname
@@ -574,4 +574,23 @@ fn _test_name() {
     println!("Last Name: {}", lastname);
     
      // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+}
+
+// how to changes a value using reference (&mut (type of data))
+// fungsi ini akan mengubah nilai dari value yang diberikan
+fn value_brow(value: &mut String) {
+    // dengan menggunakan reference mutable
+    // sehingga nilai dari value akan berubah
+    // dan akan mencetak nilai sebelum dan sesudah diubah
+    value.push_str(" - Updated"); // mencoba mengubah nilai dari value
+    println!("Before: {}", value);
+}
+
+#[test]
+fn change_value() {
+    let mut value = String::from("Muhammad Nadhif");
+    value.push_str(" Triyudo"); // menambahkan string ke dalam string (push_str)
+    // memanggil fungsi valueBrow dengan reference dari value
+    value_brow(&mut value); // menggunakan &mut untuk mengubah nilai dari value
+    println!("After: {}", value); // akan mencetak hasil dari fungsi valueBrow
 }
