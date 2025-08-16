@@ -532,12 +532,12 @@ fn factorial_recur_test() {
     assert_eq!(result, 120); // memastikan hasil dari fungsi rekursif sama dengan 120
 }
 
-
+// return value ownership to build a new tuple
 fn full_name(first_name: String, last_name: String) -> (String, String, String) {
     // fungsi ini akan mengembalikan nilai String
     // yang merupakan gabungan dari firstname dan lastname
     let full_name = format!("{} {}", first_name, last_name); // menggunakan format! untuk menggabungkan string
-    (first_name, last_name, full_name)
+    (first_name, last_name, full_name) // mengembalikan tuple yang berisi first_name, last_name, dan full_name
 }
 
 
@@ -549,6 +549,29 @@ fn test_name() {
     println!("Full Name: {}", name);
     println!("First Name: {}", _first_name);
     println!("Last Name: {}", _last_name);
+    
+     // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+}
+
+
+// return value ownership to build a new tuple
+fn full_name_ref(first_name: &String, last_name: &String) -> String {
+    // fungsi ini akan mengembalikan nilai String
+    // yang merupakan gabungan dari firstname dan lastname
+    format!("{} {}", first_name, last_name) // menggunakan format! untuk menggabungkan string
+    // mengembalikan tuple yang berisi first_name, last_name, dan full_name
+}
+
+
+#[test]
+fn _test_name() {
+    let firstname = String::from("Muhammad");
+    let lastname = String::from("Nadhif Triyudo");
+    
+    let name = full_name_ref(&firstname, &lastname);
+    println!("Full Name: {}", name);
+    println!("First Name: {}", firstname);
+    println!("Last Name: {}", lastname);
     
      // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
 }
