@@ -376,4 +376,263 @@ fn perulangan() {
         }
     };
     println!("Perulangan ke: {}", result);
+
+    let mut o:i32 = 0;
+    'outer: loop {
+        o += 1;
+        let mut p:i32 = 0;
+        loop{
+            if o > 10 {
+                break 'outer; // keluar dari loop outer
+            }
+            println!("perulangan ke: {} x {} = {}", o, p, o * p);
+            p += 1;
+            if p > 10{
+                break;
+            }
+        }
+    }
+}
+
+
+#[test]
+fn whileloop() {
+    let mut i = 0;
+    while i <= 10 { // perulangan akan berhenti jika i lebih besar dari 10
+        // jika i genap maka akan mencetak perulangan ke i
+        // jika i ganjil maka akan melanjutkan ke perulangan selanjutnya
+        if i % 2 == 0 { // jika i genap maka akan mencetak perulangan ke i
+            println!("Perulangan ke: {}", i);
+        }
+        i += 1;
+    }
+}
+
+#[test]
+fn iteration_while() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+    let mut index = 0;
+
+    while index < datas.len(){  // selama index kurang dari panjang data
+        // mencetak data pada index ke index
+        println!("Value: {}", datas[index]);
+        index += 1;
+        // dan menambahkan index dengan 1 setiap kali perulangan
+        // sehingga perulangan akan berhenti jika index lebih besar dari panjang data
+    }
+    
+}
+
+#[test]
+fn for_loop() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+    for value in datas{// menggunakan for untuk iterasi data
+        // iter() akan mengembalikan iterator yang akan mengembalikan data satu per satu
+        // sehingga kita bisa mengambil data dari array satu per satu
+        // dan mencetak data pada index ke index
+        // menambahkan index dengan 1 setiap kali perulangan
+        // sehingga perulangan akan berhenti jika index lebih besar dari panjang data
+        println!("Value: {}", value);
+    }
+}
+
+
+#[test] 
+fn range_ite() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+
+    let range = 0..datas.len(); // membuat range dari 0 sampai panjang data
+    // range adalah tipe data yang merepresentasikan rentang dari nilai tertentu
+    // range akan mengembalikan nilai dari 0 sampai panjang data - 1
+    // sehingga kita bisa mengambil data dari array satu per satu
+    // dan mencetak data pada index ke index    
+    println!("Start: {}", range.start);
+    println!("End: {}", range.end);
+
+    for i in range {
+        println!("-{}", datas[i]);
+    }
+}
+
+#[test] 
+fn range_inc() {
+    let datas: [&str; 5] = ["Nadhif", "Jojo", "Triyudo", "Muhammad", "Belajar"];
+
+    let range = 0..=4; // ( menggunakan '=')
+    // range inclusive akan mengembalikan nilai dari 0 sampai panjang data
+    // sehingga kita bisa mengambil data dari array satu per satu
+    // dan mencetak data pada index ke index     
+    println!("Start: {}", range.start()); // untuk mengambil nilai awal range menggunakan method start()
+    println!("End: {}", range.end()); // untuk mengambil nilai akhir range menggunakan method end()
+
+    for i in range {
+        println!("-{}", datas[i]);
+    }
+}
+
+
+fn names(firstname: &str, lastname:&str) {
+    println!("Goodbye, {} {}", firstname, lastname);
+}
+
+#[test]
+fn name_call(){
+    names("dipz", "newbie");
+    names("eko", "kurniawan");
+    names("newsz", "guy");
+}
+
+
+fn factorial_loop(n: i32) -> i32 {
+    if n < 1{
+        return 0;// jika n kurang dari 1 maka akan mengembalikan nilai 0
+    }
+
+    let mut result = 1;
+    for i in 1..=n {
+        result *= i; // mengalikan result dengan i  
+    }
+    result // mengembalikan nilai result
+
+}
+
+#[test]
+fn factorial_test() {
+    print!("Factorial of 5 is: {}", factorial_loop(5));
+}
+
+fn recurvise(value: String, times:u32) {
+    if times == 0 {
+        return; // jika times sama dengan 0 maka akan keluar dari fungsi
+    }else{
+        println!("{}", value);
+        recurvise(value, times - 1); // memanggil fungsi rekursif dengan mengurangi times
+    }
+}
+
+#[test]
+fn recurvise_test() {
+    recurvise(String::from("Hello, World!"), 5); // memanggil fungsi rekursif
+    // akan mencetak value sebanyak times kali
+    // jika times sama dengan 0 maka akan keluar dari fungsi
+    // jika times lebih dari 0 maka akan mencetak value dan memanggil fungsi rekursif dengan mengurangi times
+}
+
+fn factorial_recur(n: i32) -> i32 {
+    if n == 1 {
+        return 1; // jika n kurang dari 1 maka akan mengembalikan nilai 1
+    }
+    n * factorial_recur(n - 1) // memanggil fungsi rekursif dengan mengurangi n
+}
+
+#[test] 
+fn factorial_recur_test() {
+    let result = factorial_recur(5);
+    println!("Factorial of 5 is: {}", result); // akan mencetak hasil dari fungsi rekursif
+    assert_eq!(result, 120); // memastikan hasil dari fungsi rekursif sama dengan 120
+}
+
+// return value ownership to build a new tuple
+fn full_name(first_name: String, last_name: String) -> (String, String, String) {
+    // fungsi ini akan mengembalikan nilai String
+    // yang merupakan gabungan dari firstname dan lastname
+    let full_name = format!("{} {}", first_name, last_name); // menggunakan format! untuk menggabungkan string
+    (first_name, last_name, full_name) // mengembalikan tuple yang berisi first_name, last_name, dan full_name
+}
+
+
+#[test]
+fn test_name() {
+    let firstname = String::from("Muhammad");
+    let lastname = String::from("Nadhif Triyudo");
+    let (_first_name, _last_name, name) = full_name(firstname, lastname); // memanggil fungsi full_name
+    println!("Full Name: {}", name);
+    println!("First Name: {}", _first_name);
+    println!("Last Name: {}", _last_name);
+    
+     // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+}
+
+
+// return value menggunakan reference
+fn full_name_ref(first_name: &String, last_name: &String) -> String {
+    // fungsi ini akan mengembalikan nilai String
+    // yang merupakan gabungan dari firstname dan lastname
+    format!("{} {}", first_name, last_name) // menggunakan format! untuk menggabungkan string
+    // mengembalikan tuple yang berisi first_name, last_name, dan full_name
+}
+
+
+#[test]
+fn _test_name() {
+    let firstname = String::from("Muhammad");
+    let lastname = String::from("Nadhif Triyudo");
+    
+    let name = full_name_ref(&firstname, &lastname);
+    println!("Full Name: {}", name);
+    println!("First Name: {}", firstname);
+    println!("Last Name: {}", lastname);
+    
+     // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+}
+
+// how to changes a value using reference (&mut (type of data))
+// fungsi ini akan mengubah nilai dari value yang diberikan
+fn value_brow(value: &mut String) {
+    // dengan menggunakan reference mutable
+    // sehingga nilai dari value akan berubah
+    // dan akan mencetak nilai sebelum dan sesudah diubah
+    value.push_str(" - Updated"); // mencoba mengubah nilai dari value
+    println!("Before: {}", value);
+}
+
+#[test]
+fn change_value() {
+    let mut value = String::from("Muhammad Nadhif");
+    // memanggil fungsi valueBrow dengan reference dari value
+    value_brow(&mut value); // menggunakan &mut untuk mengubah nilai dari value
+    value.push_str(" Triyudo"); // menambahkan string ke dalam string (push_str)
+    println!("After: {}", value); // akan mencetak hasil dari fungsi valueBrow
+}
+
+
+// solusi mengatasi dangling reference
+// dengan menggunakan reference
+fn full_name_dng(first_name: &String, last_name: &String) -> String {
+    // fungsi ini akan mengembalikan nilai String
+    // yang merupakan gabungan dari firstname dan lastname
+    let nama = format!("{} {}", first_name, last_name); // menggunakan format! untuk menggabungkan string
+    return nama;
+    // mengembalikan tuple yang berisi first_name, last_name, dan full_name
+}
+
+
+#[test]
+fn _test_namedng() {
+    let firstname = String::from("Muhammad");
+    let lastname = String::from("Nadhif Triyudo");
+    
+    let name = full_name_dng(&firstname, &lastname);
+    println!("Full Name: {}", name);
+    println!("First Name: {}", firstname);
+    println!("Last Name: {}", lastname);
+    
+     // akan mencetak hasil dari fungsi full_name// memastikan hasil dari fungsi full_name sama dengan "Muhammad Nadhif Triyudo"
+}
+
+
+#[test]
+fn slice_array() {
+    let array: [i32; 10] = [1,2,3,4,5,6,7,8,9,10];
+    let slice1: &[i32] = &array[..]; // mengambil data dari awal sampai akhir
+    print!("Slice1: {:?}", slice1);
+
+    let slice2: &[i32] = &array[2..5]; // mengambil data dari index 2 sampai index 5 
+    print!("Slice2: {:?}", slice2);
+
+    let slice3: &[i32] = &array[5..]; // mengambil data dari index 5 sampai akhir
+    print!("Slice3: {:?}", slice3);
+
+    let slice4: &[i32] = &array[..5]; // mengambil data dari awal sampai index 5 
+    print!("Slice4: {:?}", slice4);
 }
