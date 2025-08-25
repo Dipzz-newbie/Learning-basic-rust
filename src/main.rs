@@ -637,25 +637,36 @@ fn slice_array() {
     print!("Slice4: {:?}", slice4);
 }
 
+
 struct Person {
+    // belajar mengenai struct
+    // struct adalah tipe data yang dapat menyimpan beberapa nilai dengan tipe data yang berbeda
+    // struct biasanya digunakan untuk menyimpan data yang berhubungan satu sama lain   
     first_name: String,
     middle_name: String,
     last_name: String,
     age: u8,
 }
 
+
+fn print_person(person: &Person) {
+     // mengakses nilai dari variabel struct (person.first_name) untuk mengakses nilai dari variabel struct
+    println!("First Name: {}", person.first_name);
+    println!("Middle Name: {}", person.middle_name);
+    println!("Last_name: {}", person.last_name);
+    println!("Age: {}", person.age);
+}
+
 #[test]
 fn struct_var() {
+    // membuat variabel dengan tipe data struct 
+    // dan mengakses nilai dari variabel struct
     let person: Person = Person {
         first_name: String::from("Muhammad"),
         middle_name: String::from("Nadhif"),
         last_name: String::from("Triyudo"),
         age: 17,
     };
-
-    println!("First Name: {}", person.first_name);
-    println!("Middle Name: {}", person.middle_name);
-    println!("Last_name: {}", person.last_name);
-    println!("Age: {}", person.age);
-
+   
+    print_person(&person); // memanggil fungsi print_person dengan reference dari person
 }
