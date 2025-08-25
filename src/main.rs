@@ -636,3 +636,26 @@ fn slice_array() {
     let slice4: &[i32] = &array[..5]; // mengambil data dari awal sampai index 5 
     print!("Slice4: {:?}", slice4);
 }
+
+struct Person {
+    first_name: String,
+    middle_name: String,
+    last_name: String,
+    age: u8,
+}
+
+#[test]
+fn struct_var() {
+    let person: Person = Person {
+        first_name: String::from("Muhammad"),
+        middle_name: String::from("Nadhif"),
+        last_name: String::from("Triyudo"),
+        age: 17,
+    };
+
+    println!("First Name: {}", person.first_name);
+    println!("Middle Name: {}", person.middle_name);
+    println!("Last_name: {}", person.last_name);
+    println!("Age: {}", person.age);
+
+}
