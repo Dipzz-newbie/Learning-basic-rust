@@ -670,3 +670,19 @@ fn struct_var() {
    
     print_person(&person); // memanggil fungsi print_person dengan reference dari person
 }
+
+#[test]
+fn person_shorthand() {
+    let first_name = String::from("Muhammad");
+    let last_name = String::from("Triyudo");
+    let age = 17;
+
+    let person: Person = Person {
+        first_name, // menggunakan shorthand untuk mengisi nilai dari variabel struct dengan konsekuensi variabel dan field harus sama dan akan berpindah ownershipnya yang awal di let atas menjadi kedalam sini
+        middle_name: String::from("Nadhif"), // tidak menggunakan shorthand untuk mengisi nilai dari variabel struct
+        last_name,
+        age,
+    };
+
+    print_person(&person); // memanggil fungsi print_person dengan reference dari person
+}
