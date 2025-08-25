@@ -683,6 +683,8 @@ fn person_shorthand() {
         last_name,
         age,
     };
-
+    
     print_person(&person); // memanggil fungsi print_person dengan reference dari person
+    let person2: Person = Person{..person};
+    print_person(&person2); // memanggil fungsi print_person dengan reference dari person2
 }
