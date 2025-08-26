@@ -738,3 +738,17 @@ fn test_method() {
     person.say_hello("Jojo");
 }
 
+// belajar mengenai associated function pada struct
+impl GeoPoint { // harus memilik nilai struct apabila ingin membuat method
+    // associated function adalah fungsi yang dimiliki oleh tipe data tertentu
+    fn new(lat: f64, long: f64) -> GeoPoint {
+        GeoPoint(lat, long)
+    }
+}
+
+#[test]
+fn test_new_kordinator() {
+    // membuat variabel dengan tipe data struct tuple menggunakan associated function
+    let kordinator: GeoPoint = GeoPoint::new(-10.7, 20.9);
+    println!("Kordinator: {} {}", kordinator.0, kordinator.1);
+}
