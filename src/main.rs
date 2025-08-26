@@ -714,3 +714,27 @@ fn unit_struct() {
     // struct unit biasanya digunakan untuk menandai sesuatu
     println!("Nothing: {:?}", std::any::type_name::<Nothing>()); // menampilkan tipe data dari variabel struct unit
 }
+
+impl Person {
+    // belajar mengenai method pada struct
+    // method adalah fungsi yang dimiliki oleh tipe data tertentu
+    // method pada struct biasanya digunakan untuk mengubah atau mengambil bagian dari struct
+    fn say_hello(&self, name: &str) { // &self adalah reference dari struct itu sendiri
+        // self adalah variabel yang merepresentasikan struct itu sendiri
+        // sehingga kita bisa mengakses nilai dari struct itu sendiri
+        println!("Hello, {}! My name is {} {}", name, self.first_name, self.last_name);
+    }
+}
+
+#[test]
+fn test_method() {
+    let person = Person {
+        first_name: String::from("Muhammad"),
+        middle_name: String::from("Nadhif"),
+        last_name: String::from("Triyudo"),
+        age: 17,
+    };
+
+    person.say_hello("Jojo");
+}
+
