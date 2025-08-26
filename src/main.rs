@@ -695,3 +695,11 @@ fn person_shorthand() {
 
     println!("first name: {}", person.first_name)
 }
+
+struct GeoPoint(f64, f64); // struct tuple
+
+#[test]
+fn tuple_struct() {
+    let geo_point = GeoPoint(-10.7, 20.9); // membuat variabel dengan tipe data struct tuple
+    println!("Geo Point: {} {}", geo_point.0, geo_point.1); // mengakses nilai dari variabel struct tuple
+}
