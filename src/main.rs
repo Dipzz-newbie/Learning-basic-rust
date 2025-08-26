@@ -685,6 +685,13 @@ fn person_shorthand() {
     };
     
     print_person(&person); // memanggil fungsi print_person dengan reference dari person
-    let person2: Person = Person{..person};
+    let person2: Person = Person{
+        first_name: person.first_name.clone(), // harus di clone karena ownership dari person sudah pindah ke person2
+        middle_name: person.middle_name.clone(), // harus di clone karena ownership dari person sudah pindah ke person2
+        last_name: person.last_name.clone(), // harus di clone karena ownership dari person sudah pindah ke person2
+        ..person}; // bisa menduplikat data yang sama tanpa harus di tulis ulang (update sytax) 
     print_person(&person2); // memanggil fungsi print_person dengan reference dari person2
+
+
+    println!("first name: {}", person.first_name)
 }
