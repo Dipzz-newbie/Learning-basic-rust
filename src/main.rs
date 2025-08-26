@@ -703,3 +703,14 @@ fn tuple_struct() {
     let geo_point = GeoPoint(-10.7, 20.9); // membuat variabel dengan tipe data struct tuple
     println!("Geo Point: {} {}", geo_point.0, geo_point.1); // mengakses nilai dari variabel struct tuple
 }
+
+struct Nothing;
+
+#[test]
+fn unit_struct() {
+    let _nothing = Nothing; // membuat variabel dengan tipe data struct unit
+     let _nothing2 = Nothing{};
+    // struct unit tidak memiliki nilai
+    // struct unit biasanya digunakan untuk menandai sesuatu
+    println!("Nothing: {:?}", std::any::type_name::<Nothing>()); // menampilkan tipe data dari variabel struct unit
+}
