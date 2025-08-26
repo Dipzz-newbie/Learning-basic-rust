@@ -752,3 +752,17 @@ fn test_new_kordinator() {
     let kordinator: GeoPoint = GeoPoint::new(-10.7, 20.9);
     println!("Kordinator: {} {}", kordinator.0, kordinator.1);
 }
+
+enum Level {
+    Regular,
+    Premium,
+    Platinum
+}
+
+#[test]
+fn test_enum() {
+    let _level1: Level = Level::Regular;
+    let _level2: Level = Level::Premium;
+    let _level3: Level = Level::Platinum;
+
+}
