@@ -797,3 +797,23 @@ fn test_function_enum() {
     _payment3.pay(300_000); // memanggil method pay pada enum Payment
     println!("Payment method created. ");
 }
+
+
+// test paterrn matching
+#[test]
+fn test_pattern_matching() {
+    let level: Level = Level::Premium;
+
+    match level {
+        Level::Regular => {
+             println!("Regular Level");
+        }
+        Level::Premium => {
+             println!("Premium Level");
+        }
+        Level::Platinum => {
+             println!("Platinum Level");
+        }
+       
+    }
+} 
