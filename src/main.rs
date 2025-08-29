@@ -781,7 +781,18 @@ enum Payment{
 
 impl Payment {
     fn pay(&self, amount: u32) {
-        println!("Paying {}", amount);
+        
+        match self {
+            Payment::CreditCard(card_number) => {
+                println!("Paying {} using Credit Card: {}", amount, card_number.trim());
+            }
+            Payment::BankTransfer(account_number, bank_name) => {
+                println!("Paying {} using Bank Transfer: {} - {}", amount, bank_name, account_number.trim());
+            }
+            Payment::EWallet(wallet_id) => {
+                println!("Paying {} using E-Wallet: {}", amount, wallet_id.trim());
+            }
+        }
     }
 }
 
