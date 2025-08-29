@@ -766,3 +766,22 @@ fn test_enum() {
     let _level3: Level = Level::Platinum;
 
 }
+
+
+// belajar tentang enum dengan data yang akan terjadi 
+enum Payment{
+    // card number disimpan dalam bentuk string
+    CreditCard(String),
+    // bank transfer disimpan dalam bentuk string
+    BankTransfer(String, String),
+    // e-wallet disimpan dalam bentuk string
+    EWallet(String),
+
+}
+
+
+#[test] 
+fn test_function_enum() {
+    let _payment: Payment = Payment::BankTransfer(String::from(" 2345 6789 0123 4567 "), String::from("Bank ABC"));
+    println!("Payment method created. ");
+}
