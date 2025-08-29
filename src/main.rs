@@ -779,9 +779,21 @@ enum Payment{
 
 }
 
+impl Payment {
+    fn pay(&self, amount: u32) {
+        println!("Paying {}", amount);
+    }
+}
+
 
 #[test] 
 fn test_function_enum() {
-    let _payment: Payment = Payment::BankTransfer(String::from(" 2345 6789 0123 4567 "), String::from("Bank ABC"));
+    // membuat variabel dengan tipe data enum
+    let _payment1: Payment = Payment::CreditCard(String::from(" 21367 8901 2345 6789 "));
+    _payment1.pay(100_000); // memanggil method pay pada enum Payment
+    let _payment2: Payment = Payment::BankTransfer(String::from(" 2345 6789 0123 4567 "), String::from("Bank ABC"));
+    _payment2.pay(500_000); // memanggil method pay pada enum Payment
+    let _payment3: Payment = Payment::EWallet(String::from(" Dana Id "));
+    _payment3.pay(300_000); // memanggil method pay pada enum Payment
     println!("Payment method created. ");
 }
